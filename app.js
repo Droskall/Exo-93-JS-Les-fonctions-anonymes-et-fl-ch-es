@@ -1,15 +1,19 @@
-let buttonA = document.getElementById("alert");
-let buttonS = document.getElementById("somme");
+const buttons = document.querySelectorAll("button");
 
-buttonA.addEventListener("click", () => {alert("Hello world");});
-buttonA.addEventListener("keypress", (event) => {
-    if(event.key ==="enter") {
-        alert("Hello world");
-    }
-});
+buttons[0].addEventListener("click",() => alert("hello world"));
 
-buttonS.addEventListener("click", () => {
-    let div = document.createElement("div");
-    document.body.append(div);
-    div.innerHTML = (5 + 6).toString();
+buttons[1].addEventListener("click", () => {
+    const div = document.createElement("div");
+    div.innerHTML = (5+6).toString();
+    document.querySelector("body").appendChild(div)
 })
+
+for (let button of buttons) {
+    button.addEventListener('mouseenter', () => {button.classList = "enter"});
+
+    button.addEventListener('mouseleave', () => {button.classList = "leave"});
+
+    button.addEventListener('click', () => {button.classList = "click"});
+}
+
+document.body.addEventListener('keypress',(e) =>{if (e.key === "Enter"){alert("hello world")}})
